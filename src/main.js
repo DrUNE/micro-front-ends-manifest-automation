@@ -2,6 +2,7 @@ import 'babel-polyfill';
 import axios from 'axios';
 
 const handleError = error => console.error(error);
+
 const handleSucess = (location, { data: manifest }) => {
     console.log('Module\'s manifest configuration loaded:', manifest);
 
@@ -18,6 +19,7 @@ const handleSucess = (location, { data: manifest }) => {
     document.head.appendChild(style);
     document.body.appendChild(script);
 };
+
 const handleLoadManifestSucess = ({ data: manifest }) => {
     console.log('Manifest configuration loaded:', manifest);
 
@@ -29,13 +31,13 @@ const handleLoadManifestSucess = ({ data: manifest }) => {
         }
     });
 };
+
 const loadManifest = () => axios.get(`manifest.json`)
     .then(handleLoadManifestSucess)
     .catch(handleError);
+
 const loadModuleManifest = manifestLocation => axios.get(manifestLocation)
     .then(handleSucess.bind(this, manifestLocation))
     .catch(handleError);
 
 loadManifest();
-
-

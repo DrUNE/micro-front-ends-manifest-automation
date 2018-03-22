@@ -6,7 +6,7 @@
   "scripts": {
     "clean:dist": "rimraf ../dist/microfrontend2",
     "start": "webpack-dev-server --progress --open --config webpack.dev.js",
-    "build": "run-s clean:dist update-manifest build:prod",
+    "build": "run-s clean:dist build:prod update-manifest",
     "build:prod": "webpack --config webpack.prod.js",
     "update-manifest": "node updateManifest.js",
     "test": "echo \"Error: no test specified\" && exit 1"
